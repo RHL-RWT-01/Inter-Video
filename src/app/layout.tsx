@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import ConvexClerkProvider from "@/components/providers/ConvexClerkProvider";
+import Navbar from "@/components/ui/Navbar";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,13 +30,31 @@ export default function RootLayout({
 }>) {
   return (
     <ConvexClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
 
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SignedIn>
 
-          {children}
+              <div className="min-h-screen">
+
+                <Navbar />
+                <main className="px-5 sm:px-6 lg:px-8" >{children}</main>
+
+              </div>
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </ThemeProvider>
+
         </body>
       </html>
     </ConvexClerkProvider>
