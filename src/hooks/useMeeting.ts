@@ -11,7 +11,7 @@ const useMeeting = () => {
       const call = client.call("default", id);
       await call.getOrCreate({
         data: {
-          starts_at: new Date().toString(),
+          starts_at: new Date().toISOString(),
           custom: {
             description: "Instant meeting",
           },

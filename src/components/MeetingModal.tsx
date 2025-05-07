@@ -17,7 +17,16 @@ function MeetingModal({ isOpen, onClose, title, isJoinMeeting }: MeetingModalPro
     const [meetingUrl, setMeetingUrl] = useState("");
 
     const {createInstantMeeting, joinMeeting} = useMeeting();
-    const handleStart = () => { };
+    const handleStart = () => { 
+        if(isJoinMeeting){
+            const meetingId = meetingUrl.split("/").pop();
+            if(meetingId) joinMeeting(meetingId);
+        }else{
+            createInstantMeeting();
+        }
+        setMeetingUrl("");
+        onClose();
+    };
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className='sm:max-w-[425px] '>
