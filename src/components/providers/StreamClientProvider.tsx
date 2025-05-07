@@ -4,10 +4,12 @@ import { ReactNode,useEffect, useState } from "react";
 import {StreamVideoClient, StreamVideo} from "@stream-io/video-react-sdk";
 
 import {useUser} from "@clerk/nextjs";
+import Loader from "../Loader";
+import { streamTokenProvider } from "@/actions/stream.actions";
 
 
 const StreamVideoProvider = ({children}:{children:ReactNode})=>{
-    const [StreamVideoClient, setStreamVideoClient] = useState<StreamVideoClient>();
+    const [streamVideoClient, setStreamVideoClient] = useState<StreamVideoClient>();
     const {user, isLoaded} = useUser();
 
     useEffect(()=>{
@@ -27,9 +29,12 @@ const StreamVideoProvider = ({children}:{children:ReactNode})=>{
 
     },[user, isLoaded]);
 
-    if(!StreamVideoClinet)return <LoaderUI/>;
+    if(!streamVideoClient)return <Loader/>;
 
     return(
+        <StreamVideo client={streamVideoClient} >
+            {children}
+        </StreamVideo>
 
     )
 };
