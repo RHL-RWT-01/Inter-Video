@@ -78,7 +78,7 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                     />
                   </div>
 
-                  {/* Mic Control */}
+                  {/* MIC CONTROL */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -97,7 +97,7 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                     />
                   </div>
 
-                  {/* Device Setting */}
+                  {/* DEVICE SETTINGS */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -112,7 +112,7 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                   </div>
                 </div>
 
-                {/* Join Button */}
+                {/* JOIN BTN */}
                 <div className="space-y-3 mt-8">
                   <Button className="w-full" size="lg" onClick={handleJoin}>
                     Join Meeting

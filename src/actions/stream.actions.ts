@@ -5,7 +5,7 @@ import { StreamClient } from "@stream-io/node-sdk";
 
 export const streamTokenProvider = async () => {
   const user = await currentUser();
-  if (!user) throw new Error("User is not authenticated");
+  if (!user) return new Error("User is not authenticated");
   const streamClient = new StreamClient(
     process.env.NEXT_PUBLIC_STREAM_API_KEY!,
     process.env.STREAM_SECRET_KEY!
